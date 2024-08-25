@@ -1,0 +1,1 @@
+this is text we are going to get from our c++ programme

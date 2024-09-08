@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <map>
 
 using namespace std;
 int is_all_equal(vector<int> & nums){
@@ -35,7 +36,13 @@ int main(){
     //     cout << i << endl;
     // }
 
-    cout << ((2%2)==0) << endl;
+    // cout << ((2%2)==0) << endl;
+    map<char, int> m;
+    m['A'] = 20;
+    m['B'] = 89;
+    m['C'] = 0;
+    m['?'] = 0;
+    cout << m.begin();
 
     return 0;
 }

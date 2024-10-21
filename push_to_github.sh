@@ -1,4 +1,4 @@
 git add .
-now="$(date +"%T")"
+now="$(date)"
 git commit -m "Update on -> $now"
 git push

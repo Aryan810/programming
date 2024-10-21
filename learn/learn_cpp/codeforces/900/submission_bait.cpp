@@ -1,51 +1,42 @@
+// we just need to see if there is an element wtih frequency 'odd' and
+// if yes then alice will first select the greatest number with odd frequency
+
+
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <set>
-
+#include <map>
 #define lli long long int
+#define vi vector<int>
+#define vlli vector<lli>
 
 using namespace std;
 
-int willWin = 0;
-
-void can_win(vector<int> a, int mx, int alice){
-    vector<int>::iterator x = lower_bound(a.begin(), a.end(), mx);
-    if (x == a.end()){
-        if (alice == 0){
-            willWin = 1;
-        }
-    }else{
-        a.erase(a.begin(), x);
-        int last = 0;
-        alice = (alice == 0)?1:0;
-        for (int i=0;i<a.size();i++){
-            if (a[i] != last){
-                last = a[i];
-                mx = a[i];
-                a[i] = 0;
-                can_win(a, mx, alice);
-            }
-        }
-    }
-}
-
 int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
 
     int t;
     cin >> t;
 
     while(t--){
+
         int n;
         cin >> n;
-        vector<int> a(n);
+        int sum = 0;
+        vector<int> freq(n+1, 0);
         for (int i=0;i<n;i++){
-            cin >> a[i];
+            int t;
+            cin >> t;
+            freq[t] += 1;
         }
-        sort(a.begin(), a.end());
-        can_win(a, 0, 1);
-        cout << (willWin?"YES":"NO") << endl;
-        willWin = 0;
+        bool alice = 0;
+        for (int i=0;i<freq.size();i++){
+            if (freq[i]%2 != 0){
+                alice = true;
+            }
+        }
+        cout << (alice?"YES":"NO") << endl;
+
     }
 
     return 0;

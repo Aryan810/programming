@@ -1,46 +1,31 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <set>
-
 #define lli long long int
 
 using namespace std;
 
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
+
     int t;
     cin >> t;
-    lli n, m;
-    char x;
-    lli l, r;
+
     while(t--){
+        int n, m;
         cin >> n >> m;
-        vector<lli> an(n);
-        for(lli i=0ll;i<n;i++){cin >> an[i];}
-        sort(an.begin(), an.end());
-        for (lli i=0ll;i<m;i++){
-            cin >> x >> l >> r;
-
-            // vector<lli>::iterator lower, upper;
-            // lower = lower_bound(an.begin(), an.end(), l);
-            // upper = upper_bound(lower, an.end(), r); 
-            // if (x == '+'){for_each(lower, upper, [](lli &n){n+=1;});}
-            // else{for_each(lower, upper, [](lli &n){n-=1;});}
-            // cout << an[n-1] << " ";
-
-            // different approach
-            vector<lli>::iterator lower, upper;
-            lower = lower_bound(an.begin(), an.end(), l);
-            upper = upper_bound(lower, an.end(), r);
-            if (upper == an.end()){
-                if (x == '+'){for_each(lower, upper, [](lli &n){n+=1;});}
-                else{for_each(lower, upper, [](lli &n){n-=1;});}
+        vector<lli> arr(n);
+        for (int i=0;i<n;i++){
+            cin >> arr[i];
+        }
+        lli max = *max_element(arr.begin(), arr.end());
+        for (int i=0;i<m;i++){
+            lli l, r;
+            char c;
+            cin >> c >> l >> r;
+            if ((max >= l)&&(max <= r)){
+                max += (c == '+')?1ll:-1ll;
             }
-            cout << an[n-1] << " ";
-
+            cout << max << " ";
         }
         cout << endl;
 

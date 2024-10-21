@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <set>
 #include <map>
 #include <math.h>
 #include <algorithm>
@@ -98,11 +99,15 @@ int main(){
     // char a, b;
     // cin >> a >> b;
     // cout << a << " " << b;
-    lli a = 900;
-    string s = to_string(1ll+(lli)(pow(10, a-1ll)));
-    cout << s << endl;
+    // lli a = 900;
+    // string s = to_string(1ll+(lli)(pow(10, a-1ll)));
+    // cout << s << endl;
     // for (int i=1;i<=a-2;i++){
     //     cout << s.substr(a*i, a) << endl;
     // }
+    set<pair<int, int> > s;
+    pair<int, int> p(1, 42);
+    pair<int, int> p1(1, 42);
+    cout << (p==p1) << endl;
     return 0;
 }

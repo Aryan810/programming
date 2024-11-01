@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
-#define lli long long int
+#define ll long long int
 #define vi vector<int>
 #define vii vector<int>::iterator
-#define vllii vector<lli>::iterator
-#define vlli vector<lli>
+#define vlli vector<ll>::iterator
+#define vll vector<ll>
 
 using namespace std;
 

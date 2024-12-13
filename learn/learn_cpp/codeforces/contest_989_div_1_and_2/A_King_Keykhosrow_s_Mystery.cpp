@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+#define ll long long int
+#define vi vector<int>
+#define vii vector<int>::iterator
+#define vlli vector<ll>::iterator
+#define vll vector<ll>
+
+using namespace std;
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int t;
+    cin >> t;
+
+    while(t--){
+        int a, b;
+        cin >> a >> b;
+        int k = min(a, b);
+        
+        for (int i=k;;i++){
+            if (i%a == i%b){
+                cout << i << endl;
+                break;
+            }
+        }
+        
+
+    }
+
+    return 0;
+}

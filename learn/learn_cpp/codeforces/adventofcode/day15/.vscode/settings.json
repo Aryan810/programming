@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "regex": "cpp",
+        "chrono": "cpp",
+        "span": "cpp"
+    }
+}

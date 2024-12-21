@@ -1,33 +1,36 @@
-#include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace __gnu_pbds;
+#include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+
+// #pragma GCC optimize("Ofast,unroll-loops")
+
 using namespace std;
-#define ll long long int
+using namespace __gnu_pbds;
+
+#define int long long
+#define all(v) v.begin(), v.end()
+#define rall(v) v.rbegin(), v.rend()
 #define vi vector<int>
 #define vii vector<int>::iterator
-#define vlli vector<ll>::iterator
-#define vll vector<ll>
 
-#define rep(i, n) for(int i=0;i<n;i++)
-#define all(c) c.begin(), c.end()
-template<class T> using oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template<class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; // find_by_order, order_of_key
 
 void solve(){
 
+    
+
 }
 
-int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+signed main(){
 
-    int t;
-    cin >> t;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-    while(t--){
+    int test;
+    cin >> test;
 
+    while(test--){
         solve();
-
     }
 
     return 0;

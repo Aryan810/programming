@@ -1,0 +1,43 @@
+body{
+    text-align: center;
+}
+
+.box{
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    border: 2px solid black;
+}
+
+#container{
+    width: 600px;
+    display: flex;
+    height: 800px;
+    justify-self: center;
+    border: 2px solid black;
+    flex-direction: row;
+    /* justify-content: center; */
+    justify-content: center;
+    /* align properties */
+    /* align-items: center;  */
+}
+
+#box1{
+    background-color: cyan;
+}
+#box2{
+    background-color: lightcoral;
+    /* align-self: flex-end; */
+}
+#box3{
+    background-color: lightgreen;
+
+}
+#box4{
+    background-color: lightsalmon;
+
+}
+#box5{
+    background-color: purple;
+
+}

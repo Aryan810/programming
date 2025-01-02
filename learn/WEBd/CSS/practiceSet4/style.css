@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+*{
+    font-family: "Roboto Condensed";
+}
+html{
+    background-color: black;
+}
+body{
+    margin: 0;
+    height: 100%;
+}
+header{
+    height: fit-content
+}
+#navbar{
+    padding: 20px 3px 20px 3px;
+    justify-content: first baseline;
+    background-color: black;
+    margin:0;
+    height: fit-content;
+    color: white;
+}
+
+#navlinks{
+    width: fit-content;
+    justify-self: left;
+}
+
+#title{
+    color: orange;
+    text-decoration: none;
+    font-size: larger;
+    margin-right: 80px;
+    margin-left: 30px;
+}
+
+.navitem{
+    color: white;
+    text-decoration: none;
+    margin-right: 80px;
+    margin-left: 80px;
+}
+
+#search{
+    display: inline-block;
+    width: fit-content;
+    margin-left: 100px;
+}
+
+#submitbtn{
+    background-color: orange;
+    border-width: 2px;
+    border-style:none;
+    font-size: medium;
+
+    color: white;
+    margin-left: 5px;
+}
+
+#submitbtn:hover{
+    border-width: 4px;
+    border-style: solid;
+}
+
+#searchbox{
+    font-size: medium;
+    margin-right: 5px;
+    color: black;
+    background-color: white;
+}
+
+/* for main */
+main{
+    height: 80%;
+    background-color: white;
+}
+#bigbox{
+    /* width: fit-content; */
+    justify-self: center;
+    height: 100%;
+    padding-top: 40%;
+    padding-bottom: 40%;
+}
+
+.box{
+    position: sticky;
+    top: 0px;
+    height: 100px;
+    width: 100px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+    display: inline-block; 
+    background-color: red;
+}
+
+#b1{
+    background-color: rgba(255, 0, 255, 0.5);
+    background-image: url("/aryan.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+
+#b2{
+    background-color: rgba(0, 255, 255, 0.5);
+}
+
+#b3{
+    background-color: rgba(255, 255, 0, 0.5);
+}
+
+footer{
+    position: fixed;
+    bottom: 0px;
+    background-color: black;
+    margin: 0;
+    color: white;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    padding-top: 20px;
+}
+
+#float{
+    position: fixed;
+    top: 50%;
+    border-style: solid;
+    border-radius: 40px;
+    right: -40px;
+    padding-right: 45px;
+    padding-left: 1%;
+    height: 100px;
+    width: fit-content;
+    background-color: #e0201f;
+}
+
+h2{
+    color: #1FDFE0;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 45px;
+}

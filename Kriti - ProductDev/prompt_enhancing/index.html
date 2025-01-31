@@ -1,0 +1,674 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HobbyStream - Share Your Passion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #e67e22;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: background-color var(--transition-speed) ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .logo:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            transition: color var(--transition-speed) ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .nav-links a:hover::after {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+            transition: box-shadow var(--transition-speed) ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5);
+        }
+
+        .search-bar button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .search-bar button:active {
+            transform: translateY(0);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(52, 152, 219, 0.8), rgba(230, 126, 34, 0.8)), url('https://source.unsplash.com/random/1600x900?hobby') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding-top: 60px;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: both;
+        }
+
+        .cta-button:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        .content {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-card-content {
+            padding: 1.5rem;
+        }
+
+        .category-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .category-card p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .featured-streams {
+            margin-top: 4rem;
+        }
+
+        .stream-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .stream-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .stream-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .stream-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .stream-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .stream-card-content {
+            padding: 1.5rem;
+        }
+
+        .stream-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .stream-card p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .live-indicator {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-icons {
+            display: flex;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .mobile-menu-icon {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-section {
+                margin-right: 0;
+            }
+
+            .search-bar {
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            .search-bar input {
+                flex-grow: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">HobbyStream</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#live">Live Now</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" placeholder="Search hobbies...">
+                <button aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="mobile-menu-icon" aria-label="Toggle menu">☰</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <h1>Share Your Passion with the World</h1>
+            <p>Stream your hobbies live from the comfort of your home and connect with like-minded enthusiasts.</p>
+            <a href="#" class="cta-button">Start Streaming Now</a>
+        </section>
+
+        <section class="content container" id="categories">
+            <h2 class="section-title">Explore Hobbies</h2>
+            <div class="categories">
+                <div class="category-card">
+                    <img src="https://preview.redd.it/petition-to-make-this-the-subs-banner-v0-2i4owf6ue0zc1.jpeg?width=1080&crop=smart&auto=webp&s=8d33f16eeaae430b550b523395e9a8ff376dfa43" alt="Cooking" loading="lazy">
+                    <div class="category-card-content">
+                        <h3>Cooking</h3>
+                        <p>Discover culinary delights from home chefs around the world.</p>
+                        <a href="#" class="cta-button">Explore Cooking</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://preview.redd.it/zkckuom7qm3d1.jpeg?width=1080&crop=smart&auto=webp&s=cc5311e78a2e2d09666e8c830e697fb425818582" alt="Painting" loading="lazy">
+                    <div class="category-card-content">
+                        <h3>Painting</h3>
+                        <p>Watch artists create masterpieces and learn new techniques.</p>
+                        <a href="#" class="cta-button">Explore Painting</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://preview.redd.it/people-will-say-its-photoshop-but-photoshop-didnt-exist-at-v0-rl1eo2i1uvrd1.jpeg?width=1080&crop=smart&auto=webp&s=2cc56eafe15a55e48a20d2f66e065f809a994695" alt="Music" loading="lazy">
+                    <div class="category-card-content">
+                        <h3>Music</h3>
+                        <p>Enjoy live performances and music lessons from talented musicians.</p>
+                        <a href="#" class="cta-button">Explore Music</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-streams container" id="live">
+            <h2 class="section-title">Live Now</h2>
+            <div class="stream-grid">
+                <div class="stream-card">
+                    <img src="https://preview.redd.it/qzd21c0svr4d1.png?auto=webp&s=ecdc5827b28b83488c6888f216eb379678ce8d46" alt="Baking Sourdough Bread" loading="lazy">
+                    <div class="stream-card-content">
+                        <span class="live-indicator">LIVE</span>
+                        <h3>Baking Sourdough Bread</h3>
+                        <p>Join Sarah as she shares her secrets for perfect sourdough bread.</p>
+                        <a href="#" class="cta-button">Watch Now</a>
+                    </div>
+                </div>
+                <div class="stream-card">
+                    <img src="https://preview.redd.it/someone-said-i-should-post-my-painting-here-v0-7wu1boeotvyc1.jpeg?width=1080&crop=smart&auto=webp&s=a4c190ed6c375889ba7e5c89b3e07adbc717f9b4" alt="Watercolor Landscape Tutorial" loading="lazy">
+                    <div class="stream-card-content">
+                        <span class="live-indicator">LIVE</span>
+                        <h3>Watercolor Landscape Tutorial</h3>
+                        <p>Learn how to paint beautiful landscapes with John's step-by-step guide.</p>
+                        <a href="#" class="cta-button">Watch Now</a>
+                    </div>
+                </div>
+                <div class="stream-card">
+                    <img src="https://preview.redd.it/the-big-3-of-hard-images-v0-hz6gravhgszc1.jpg?width=1200&format=pjpg&auto=webp&s=6f50e232018286b3ea860a4b241ad9425e418391" alt="Guitar Basics for Beginners" loading="lazy">
+                    <div class="stream-card-content">
+                        <span class="live-indicator">LIVE</span>
+                        <h3>Guitar Basics for Beginners</h3>
+                        <p>Start your musical journey with Mark's beginner-friendly guitar lessons.</p>
+                        <a href="#" class="cta-button">Watch Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>About HobbyStream</h3>
+                <p>HobbyStream is a platform for enthusiasts to share their passions and connect with others who share their interests.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#live">Live Streams</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuIcon = document.querySelector('.mobile-menu-icon');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuIcon.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Header background change on scroll
+            const header = document.querySelector('header');
+            const scrollThreshold = 100;
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > scrollThreshold) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Lazy loading for images
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.add('fade-in');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            } else {
+                // Fallback for browsers that don't support IntersectionObserver
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    img.src = img.dataset.src;
+                });
+            }
+
+            // Form validation for search
+            const searchForm = document.querySelector('.search-bar');
+            const searchInput = searchForm.querySelector('input');
+            const searchButton = searchForm.querySelector('button');
+
+            searchButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (searchInput.value.trim() === '') {
+                    searchInput.classList.add('error');
+                    searchInput.setAttribute('aria-invalid', 'true');
+                    searchInput.setAttribute('aria-describedby', 'search-error');
+                    
+                    let errorMessage = document.getElementById('search-error');
+                    if (!errorMessage) {
+                        errorMessage = document.createElement('span');
+                        errorMessage.id = 'search-error';
+                        errorMessage.className = 'error-message';
+                        errorMessage.textContent = 'Please enter a search term';
+                        searchForm.appendChild(errorMessage);
+                    }
+                } else {
+                    searchInput.classList.remove('error');
+                    searchInput.removeAttribute('aria-invalid');
+                    searchInput.removeAttribute('aria-describedby');
+                    const errorMessage = document.getElementById('search-error');
+                    if (errorMessage) {
+                        errorMessage.remove();
+                    }
+                    // Perform search (replace with actual search functionality)
+                    console.log('Searching for:', searchInput.value);
+                }
+            });
+
+            // Clear error state on input
+            searchInput.addEventListener('input', function() {
+                this.classList.remove('error');
+                this.removeAttribute('aria-invalid');
+                this.removeAttribute('aria-describedby');
+                const errorMessage = document.getElementById('search-error');
+                if (errorMessage) {
+                    errorMessage.remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

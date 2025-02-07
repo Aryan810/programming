@@ -20,33 +20,41 @@ void solve(){
 
     int n;
     cin >> n;
-    vi a(n);
-    rep(i, n) cin >> a[i];
-    int sm = 0;
-    for (auto ele: a){
-        if (ele > 0){
-            sm += ele;
+    vector<vector<int> > grid(n, vector<int>(n));
+    for (int i=0;i<n;i++){
+        for (int j=0;j<n;j++){
+            cin >> grid[i][j];
         }
     }
-    if (a.size() == 1){
-        if (a[0] > 0){
-            cout << a[0] << endl;
-        }else{
-            cout << 0 << endl;
-        }
-        return;
-    }
-    if (a[0] >= 0){
-        cout << sm << endl;
-    }else if (a[0] <= 0 && a[1] <= 0){
-        cout << sm << endl;
-    }else if (a[0] <= 0 && a[1] >= 0){
-        if (a[0]+a[1] > 0){
-            cout << sm + a[0] << endl;
-        }else{
-            cout << sm-a[1] << endl;
+
+    vector<int> num(n, 0);
+    
+    for (int i=0;i<n;i++){
+        int sm = 0;
+        for (int j=0;j<n;j++){
+            if (sm == j){
+                num[j] += 1;
+            }
+            sm += grid[i][n-1-j];
         }
     }
+    int ans = n-1;
+    while (ans >= 0){
+        bool pos = 1;
+        for (int i=ans;i>=0;i--){
+            if (num[i] < ans - i + 1){
+                pos = 0;
+                break;
+            }
+        }
+        if (pos){
+            break;
+        }
+        ans -= 1;
+    }
+    cout << ans+1 << endl;
+
+    
 
 }
 

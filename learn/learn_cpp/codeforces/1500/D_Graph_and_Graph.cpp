@@ -18,35 +18,7 @@ template<class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, t
 
 void solve(){
 
-    int n;
-    cin >> n;
-    vi a(n);
-    rep(i, n) cin >> a[i];
-    int sm = 0;
-    for (auto ele: a){
-        if (ele > 0){
-            sm += ele;
-        }
-    }
-    if (a.size() == 1){
-        if (a[0] > 0){
-            cout << a[0] << endl;
-        }else{
-            cout << 0 << endl;
-        }
-        return;
-    }
-    if (a[0] >= 0){
-        cout << sm << endl;
-    }else if (a[0] <= 0 && a[1] <= 0){
-        cout << sm << endl;
-    }else if (a[0] <= 0 && a[1] >= 0){
-        if (a[0]+a[1] > 0){
-            cout << sm + a[0] << endl;
-        }else{
-            cout << sm-a[1] << endl;
-        }
-    }
+    
 
 }
 

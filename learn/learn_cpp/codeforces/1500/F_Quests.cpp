@@ -16,8 +16,20 @@ using namespace __gnu_pbds;
 
 template<class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; // find_by_order, order_of_key
 
-int check(int k, int a, int c, int d){
-
+int check(int k, vi & a, int c, int d){
+    if ((d)/(k+1) == 0){
+        if (a[0] >= c){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    int mxc = 0;
+    for (int i=0;i<min(k+1, (int)a.size());i++){
+        mxc += a[i] * ((d - i + k)/(k+1));
+    }
+    if (mxc >= c){return 1;}
+    return 0;
 }
 
 void solve(){
@@ -26,7 +38,8 @@ void solve(){
     cin >> n >> c >> d;
     vi a(n);
     rep(i, n) cin >> a[i];
-    int mx =  *max_element(all(a));
+    sort(rall(a));
+    int mx =  a[0];
     if (mx*d < c){
         cout << "Impossible" << endl;return;
     }else if(c <= mx){
@@ -42,10 +55,15 @@ void solve(){
                 r = k - 1;
             }
         }
+        // cout << check(2, a, c , d) << endl;
         if (check(r, a, c , d)){
-            cout << r << endl;
+            if (r >= d-1){cout << "Infinity" << endl;}else{
+                cout << r << endl;
+            }
         }else{
-            cout << l << endl;
+            if (l >= d-1){cout << "Infinity" << endl;}else{
+                cout << l << endl;
+            }
         }
     }
 

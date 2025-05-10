@@ -1,0 +1,1 @@
+pypy3 "/Users/aryangupta/Documents/programming/learn/learn_python/word_of_hour/fetch_word.py"

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebSocket Test</title>
+</head>
+<body>
+  <h1>WebSocket Echo Test</h1>
+  <input id="msg" placeholder="Enter message" />
+  <button onclick="sendMessage()">Send</button>
+  <pre id="log"></pre>
+
+  <script>
+    const socket = new WebSocket("wss://c49b-2409-4085-4e48-300c-7c48-a01a-5160-af04.ngrok-free.app/ws");
+
+    socket.onopen = () => {
+      log("✅ Connected to WebSocket server");
+    };
+
+    socket.onmessage = (e) => {
+      log("📥 Server: " + e.data);
+    };
+
+    socket.onerror = (e) => {
+      log("❌ WebSocket error: " + e.message);
+    };
+
+    function sendMessage() {
+      const input = document.getElementById("msg");
+      socket.send(input.value);
+      log("📤 Sent: " + input.value);
+    }
+
+    function log(message) {
+      const logEl = document.getElementById("log");
+      logEl.textContent += message + "\n";
+    }
+  </script>
+</body>
+</html>

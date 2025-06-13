@@ -1,0 +1,19 @@
+.big{
+    display: flex;
+    width: 100%;
+}
+.small{
+    width: 200px;
+    background-color: red;
+    height: 100%;
+}
+.box{
+    border-width: 2px;
+    /* display: flex; */
+    border-color: black;
+    border-style: solid;
+    text-wrap: nowrap;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+*{
+    font-family: "Roboto Condensed";
+}
+body{
+    margin: 0;
+}
+#navul{
+    display: flex;
+
+    justify-content: space-evenly;
+    padding: 20px 0px;
+    margin: 0;
+    list-style: none;
+    background-color: black;
+    border: 3px solid white;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    padding: 2px;
+}
+
+#div2{
+    background-color: pink;
+    display: flex;
+    height: 150px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+#centered{
+    width: 100px;
+    height: 100px;
+    background-color: cyan;
+    align-self: center;
+}

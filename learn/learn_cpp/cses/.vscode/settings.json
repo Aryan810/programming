@@ -9,6 +9,13 @@
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "barrier": "cpp",
+        "latch": "cpp",
+        "limits": "cpp",
+        "semaphore": "cpp",
+        "valarray": "cpp",
+        "chrono": "cpp",
+        "random": "cpp"
     }
 }

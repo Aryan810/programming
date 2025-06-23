@@ -23,7 +23,33 @@ void solve(){
     int n, a, b;
     cin >> n >> a >> b;
 
-    
+    vi c(n);
+    vi cum(n+1);
+    cum[0] = 0;
+    int sm = 0;
+    rep(i, n){
+        int x;
+        cin >> x;
+        sm += x;
+        cum[i+1] = sm;
+        c[i] = x;
+    }
+    multiset<int> ms; 
+    int ans = -1e18;  
+    for (int i=(n-a+1);i>0;i--){
+        // cout << ms.size() << endl;
+        if (ms.size() < (b-a+1)){
+            ms.insert(cum[i+a-1]);
+        }else{
+            ms.insert(cum[i+a-1]);
+            ms.erase(ms.find(cum[i+b]));
+        }
+        int mx = *(--ms.end());
+        ans = max(ans, mx-cum[i-1]);
+    }
+
+    cout << ans << endl;
+
 
 }
 
@@ -31,8 +57,7 @@ signed main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     // mint::set_mod(M);
-    int test;
-    cin >> test;
+    int test = 1;
 
     while(test--){
         solve();

@@ -1,0 +1,53 @@
+// #include<atcoder/modint>
+#include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+// #pragma GCC optimize("Ofast,unroll-loops")
+
+using namespace std;
+using namespace __gnu_pbds;
+// using namespace atcoder;
+// using mint = modint;
+#define int long long
+#define rep(i, n) for(int i=0;i<n;i++)
+#define all(v) v.begin(), v.end()
+#define rall(v) v.rbegin(), v.rend()
+#define vi vector<int>
+#define vii vector<int>::iterator
+#define umap(x, y) unordered_map<x, y, custom_hash>
+const int M = 1e9 + 7;
+template<class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; // find_by_order, order_of_key
+
+void solve(){
+    
+    int k;
+    cin >> k;
+    vector<int> cnt(10, 1);
+    int place = 0;
+    while (1){
+        int pdt = 1;
+        for (auto & ele: cnt){
+            pdt *= ele;
+        }
+        if (pdt >= k){
+            break;
+        }
+        cnt[(place++)%10] += 1;
+    }
+    vector<char> c = {'c', 'o', 'd', 'e', 'f', 'o', 'r', 'c', 'e', 's'};
+    for (int i=0;i<10;i++){
+        for (int j=0;j<cnt[i];j++){
+            cout << c[i];
+        }
+    }cout << endl;
+
+}
+
+signed main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    // mint::set_mod(M);
+    solve();
+
+    return 0;
+}

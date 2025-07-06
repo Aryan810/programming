@@ -22,48 +22,67 @@ void solve(){
     
     int n;
     cin >> n;
-
+    if (n == 2){
+        cout << "! " << 0 << " " << 1 << endl;return;
+    }
     // first finding which element gives max XOR with first element;
-    set<int> s;
-    for (int i=1;i<n;i++){
-        s.insert(i);
-    }
     int i = 0;
-    // 4 1 0 3 2
-    int j = *s.begin();
-    s.erase(s.begin());
-    while (s.size() > 0){
+    for (int j=1;j<n;j++){
         // for (auto & ele: s){
-        int ele = *s.begin();
-        cout << "? " << i << " " << j << " " << i << " " << ele << endl;cout.flush();
+        cout << "? " << i << " " << i << " " << j << " " << j << endl;cout.flush();
         string st;
         cin >> st;
         char res = st[0];
         if (res == '<'){
-            j = ele;
+            i = j;
         }
+    }
+    set<int> st;
+    for (int j=0;j<n;j++){
+        if (j != i){
+            st.insert(j);
+        }
+    }
+    int j = *st.begin();
+    st.erase(j);
+    set<int> maxes;
+    maxes.insert(j);
+    while (st.size() > 0){
+        int curr = *st.begin();
+        cout << "? " << i << " " << j << " " << i << " " << curr << endl;cout.flush();
 
-        s.erase(s.begin());
-        // }
-    }
-    s.clear();
-    for (int i=1;i<n;i++){
-        s.insert(i);
-    }
-    s.erase(i);
-    s.erase(j);
-    while (s.size() > 0){
-        int ele = *s.begin();
-        cout << "? " << i << " " << j << " " << ele << " " << j << endl;cout.flush();
-        string st;
-        cin >> st;
-        char res = st[0];
-        if (res == '<'){
-            i = ele;
+        string s;cin >> s;
+
+        if (s == "<"){
+            maxes.clear();
+            maxes.insert(curr);
+            j = curr;
+        }else if (s == "="){
+            maxes.insert(curr);
+            j = curr;
         }
-        s.erase(ele);
+        st.erase(curr);
     }
-    cout << "! " << i << " " << j << endl;cout.flush();
+    // for (auto & ele: maxes){
+    //     cout << ele << " ";
+    // }cout << endl;
+    int smallest = *maxes.begin();
+    maxes.erase(smallest);
+    // cout << maxes.size() << endl;
+    while (maxes.size() > 0){
+        int curr = *maxes.begin();
+        cout << "? " << smallest << " " << smallest << " " << curr << " " << curr << endl;cout.flush();
+        string s;
+        cin >> s;
+        if (s == ">"){
+            smallest = curr;
+        }
+        maxes.erase(curr);
+    }
+
+
+
+    cout << "! " << i << " " << smallest << endl;cout.flush();
 
 }
 

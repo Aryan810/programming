@@ -6,6 +6,9 @@
 
 using namespace std;
 using namespace __gnu_pbds;
+using uint = unsigned int;
+using ull = unsigned long long;
+using ll = long long;
 // using namespace atcoder;
 // using mint = modint;
 #define fast_io              \

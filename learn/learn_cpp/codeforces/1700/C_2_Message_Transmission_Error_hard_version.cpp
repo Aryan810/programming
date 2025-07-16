@@ -1,0 +1,183 @@
+// #include<atcoder/modint>
+#include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+// #pragma GCC optimize("Ofast,unroll-loops")
+
+using namespace std;
+using namespace __gnu_pbds;
+using uint = unsigned long long;
+using ull = unsigned long long;
+using ll = long long;
+// using namespace atcoder;
+// using mint = modint;
+#define fast_io              \
+    ios::sync_with_stdio(0); \
+    cin.tie(0);              \
+    cout.tie(0)
+#define int long long
+#define rep(i, n) for(int i=0;i<n;i++)
+#define each(x, a) for (auto &x : a)
+#define all(v) v.begin(), v.end()
+#define rall(v) v.rbegin(), v.rend()
+#define pi pair<int, int>
+#define p(a, b) pair<a, b>
+#define vi vector<int>
+#define vii vector<int>::iterator
+#define vvi vector<vector<int> >
+#define vv(x) vector<vector<x> >
+#define PRECISION(x) cout << fixed << setprecision(x);
+#define mnv(v) *min_element(v.begin(), v.end())
+#define mxv(v) *max_element(v.begin(), v.end())
+#define umap(x, y) unordered_map<x, y, custom_hash>
+const int mod7 = 1e9 + 7;
+const int mod9 = 998244353;
+template<class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; // find_by_order, order_of_key
+template<typename T>
+T euclid(T x, T y, T &k, T &l) {
+    if (x < 0) {
+        T g = euclid(-x, y, k, l);
+        k = -k;
+        return g;
+    }
+    if (y < 0) {
+        T g = euclid(x, -y, k, l);
+        l = -l;
+        return g;
+    }
+    if (y == 0) {
+        k = 1;
+        l = 0;
+        return x;
+    }
+    T g = euclid(y, x % y, l, k);
+    l -= k * (x / y);
+    return g;
+}
+
+uint MOD = 998244353;
+struct Mint {
+    uint x;
+
+    Mint() : x(0) {}
+    Mint(ll _x) {
+        _x %= MOD;
+        if (_x < 0) _x += MOD;
+        x = _x;
+    }
+
+    Mint& operator += (const Mint &a) {
+        x += a.x;
+        if (x >= MOD) x -= MOD;
+        return *this;
+    }
+    Mint& operator -= (const Mint &a) {
+        x += MOD - a.x;
+        if (x >= MOD) x -= MOD;
+        return *this;
+    }
+    Mint& operator *= (const Mint &a) {
+        x = (ull)x * a.x % MOD;
+        return *this;
+    }
+    Mint pow(ll pw) const {
+        Mint res = 1;
+        Mint cur = *this;
+        while(pw) {
+            if (pw & 1) res *= cur;
+            cur *= cur;
+            pw >>= 1;
+        }
+        return res;
+    }
+    Mint inv() const {
+        ll g, k, l;
+        g = euclid<ll>(x, MOD, k, l);
+        assert(g == 1);
+        k %= MOD;
+        if (k < 0) k += MOD;
+        return k;
+    }
+    Mint& operator /= (const Mint &a) {
+        return *this *= a.inv();
+    }
+    Mint operator + (const Mint &a) const {
+        return Mint(*this) += a;
+    }
+    Mint operator - (const Mint &a) const {
+        return Mint(*this) -= a;
+    }
+    Mint operator * (const Mint &a) const {
+        return Mint(*this) *= a;
+    }
+    Mint operator / (const Mint &a) const {
+        return Mint(*this) /= a;
+    }
+
+    bool operator == (const Mint &a) const {
+        return x == a.x;
+    }
+    bool operator != (const Mint &a) const {
+        return x != a.x;
+    }
+    bool operator < (const Mint &a) const {
+        return x < a.x;
+    }
+};
+void solve(){
+    
+    string s;
+    cin >> s;
+    if (s.size() == 1 || s.size() == 2){
+        cout << "NO" << endl;return;
+    }
+    MOD = 1e16 + 61;
+    Mint fh = 0;
+    Mint sh = 0;
+    int n = s.size();
+    Mint mult = 1;
+    for (int i=0;i<(n/2 + 1);i++){
+        fh *= 31;
+        fh += (int)(s[i]-'a');
+        sh += (mult * (s[n-1-i]-'a'));
+        mult *= 31;
+    }
+    if (fh == sh){
+        cout << "YES" << endl;
+        for (int i=0;i<(n/2 + 1);i++){
+            cout << s[i];
+        }cout << endl;
+        return;
+    }
+    for (int i=(n/2 + 1);i<(n-1);i++){
+        fh *= 31;
+        fh += (int)(s[i]-'a');
+        sh += (mult * (s[n-1-i]-'a'));
+        mult *= 31;
+        if (fh == sh){
+            cout << "YES" << endl;
+            for (int j=0;j<=i;j++){
+                cout << s[j];
+            }cout << endl;
+            return;
+        }
+    }
+    cout << "NO" << endl;
+
+
+
+
+
+}
+
+signed main(){
+    fast_io;   
+    // mint::set_mod(M);
+    int test = 1;
+
+    while(test--){
+        solve();
+    }
+
+    return 0;
+}

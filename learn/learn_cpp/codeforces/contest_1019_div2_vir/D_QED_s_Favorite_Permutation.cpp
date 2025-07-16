@@ -33,98 +33,79 @@ using ll = long long;
 const int mod7 = 1e9 + 7;
 const int mod9 = 998244353;
 template<class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; // find_by_order, order_of_key
-template<typename T>
-T euclid(T x, T y, T &k, T &l) {
-    if (x < 0) {
-        T g = euclid(-x, y, k, l);
-        k = -k;
-        return g;
-    }
-    if (y < 0) {
-        T g = euclid(x, -y, k, l);
-        l = -l;
-        return g;
-    }
-    if (y == 0) {
-        k = 1;
-        l = 0;
-        return x;
-    }
-    T g = euclid(y, x % y, l, k);
-    l -= k * (x / y);
-    return g;
-}
 
-uint MOD = 998244353;
-struct Mint {
-    uint x;
-
-    Mint() : x(0) {}
-    Mint(ll _x) {
-        _x %= MOD;
-        if (_x < 0) _x += MOD;
-        x = _x;
-    }
-
-    Mint& operator += (const Mint &a) {
-        x += a.x;
-        if (x >= MOD) x -= MOD;
-        return *this;
-    }
-    Mint& operator -= (const Mint &a) {
-        x += MOD - a.x;
-        if (x >= MOD) x -= MOD;
-        return *this;
-    }
-    Mint& operator *= (const Mint &a) {
-        x = (ull)x * a.x % MOD;
-        return *this;
-    }
-    Mint pow(ll pw) const {
-        Mint res = 1;
-        Mint cur = *this;
-        while(pw) {
-            if (pw & 1) res *= cur;
-            cur *= cur;
-            pw >>= 1;
-        }
-        return res;
-    }
-    Mint inv() const {
-        ll g, k, l;
-        g = euclid<ll>(x, MOD, k, l);
-        assert(g == 1);
-        k %= MOD;
-        if (k < 0) k += MOD;
-        return k;
-    }
-    Mint& operator /= (const Mint &a) {
-        return *this *= a.inv();
-    }
-    Mint operator + (const Mint &a) const {
-        return Mint(*this) += a;
-    }
-    Mint operator - (const Mint &a) const {
-        return Mint(*this) -= a;
-    }
-    Mint operator * (const Mint &a) const {
-        return Mint(*this) *= a;
-    }
-    Mint operator / (const Mint &a) const {
-        return Mint(*this) /= a;
-    }
-
-    bool operator == (const Mint &a) const {
-        return x == a.x;
-    }
-    bool operator != (const Mint &a) const {
-        return x != a.x;
-    }
-    bool operator < (const Mint &a) const {
-        return x < a.x;
-    }
-};
 void solve(){
+
+    int n, q;
+    cin >> n >> q;
+
+    vi a(n);
+    rep(i, n) cin >> a[i];
+    string s;
+    cin >> s;
+
+    set<int> rod;
+
+    set<int> s1, s2;
+    for (int i=0;i<n;i++){
+        s1.insert(a[i]);
+        s2.insert(i+1);
+
+        while ((s1.size() > 0 && s2.size() > 0) && (*s1.begin() == *s2.begin())){
+            s1.erase(s1.begin());
+            s2.erase(s2.begin());
+        }
+
+        if (s1.size() == 0 && s2.size() == 0){
+            rod.insert(i);
+        }
+    }
+    set<int> wrg;
+    for (int i=0;i<n-1;i++){
+        if (s[i]=='L' && s[i+1]=='R'){
+            if (rod.find(i) == rod.end()){
+                wrg.insert(i);
+            }
+        }
+    }
+    for (int i=0;i<q;i++){
+        int x;
+        cin >> x;
+
+        if (s[x-1] == 'L'){
+            if (x != 1 && s[x-2] == 'L'){
+                if (rod.find(x-2) == rod.end()){
+                    wrg.insert(x-2);
+                }
+            }
+            if (x != n && s[x] == 'R'){
+                if (wrg.find(x-1) != wrg.end()){
+                    wrg.erase(x-1);
+                }
+            }
+            s[x-1] = 'R';
+        }else{
+            if (x != n && s[x] == 'R'){
+                if (rod.find(x-1) == rod.end()){
+                    wrg.insert(x-1);
+                }
+            }
+            if (x != 1 && s[x-2] == 'L'){
+                if (wrg.find(x-2) != wrg.end()){
+                    wrg.erase(x-2);
+                }
+            }
+            s[x-1] = 'L';
+        }
+
+        if (wrg.size() > 0){
+            cout << "NO" << endl;
+        }else{
+            cout << "YES" << endl;
+        }
+    }
+
+
 
 }
 

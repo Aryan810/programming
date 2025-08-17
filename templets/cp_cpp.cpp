@@ -34,6 +34,12 @@ const int mod7 = 1e9 + 7;
 const int mod9 = 998244353;
 template<class T> using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; // find_by_order, order_of_key
 
+#ifdef LOCAL
+#include "/Users/aryangupta/Documents/programming/templets/algo/debug.h"
+#else
+#define debug(...) 42
+#endif
+
 void solve(){
     
     

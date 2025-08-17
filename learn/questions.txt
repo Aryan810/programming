@@ -1,0 +1,583 @@
+1. Prove that the program segment
+y := 1
+z := x +y
+is correct with respect to the initial assertion x = 0 and
+the final assertion z = 1.
+2. Verify that the program segment
+if x < 0 then x := 0
+is correct with respect to the initial assertion T and the
+final assertion x ≥ 0.
+3. Verify that the program segment
+x := 2
+z := x +y
+if y > 0 then
+z := z +1
+else
+z := 0
+is correct with respect to the initial assertion y = 3 and
+the final assertion z = 6.
+4. Verify that the program segment
+if x < y then
+min := x
+else
+min := y
+is correct with respect to the initial assertion T and the
+final assertion (x ≤ y ∧min = x) ∨(x > y ∧min = y).
+∗5. Devise a rule of inference for verification of partial cor-
+rectness of statements of the form
+if condition 1 then
+S1
+else if condition 2 then
+S2
+⋮
+else
+Sn
+where S1, S2, …, Sn are blocks.
+6. Use the rule of inference developed in Exercise 5 to ver-
+ify that the program
+Key Terms and Results
+if x < 0 then
+y := −2|x|∕x
+else if x > 0 then
+y := 2|x|∕x
+else if x = 0 then
+y := 2
+is correct with respect to the initial assertion T and the
+final assertion y = 2.
+7. Use a loop invariant to prove that the following program
+segment for computing the nth power, where n is a posi-
+tive integer, of a real number x is correct.
+power := 1
+i := 1
+while i ≤ n
+power := power ∗ x
+i := i +1
+∗8. Prove that the iterative program for finding fn given in
+Section 5.4 is correct.
+9. Provide all the details in the proof of correctness given in
+Example 5.
+10. Suppose that both the conditional statement p0 → p1 and
+the program assertion p1{S}q are true. Show that p0{S}q
+also must be true.
+11. Suppose that both the program assertion p{S}q0 and the
+conditional statement q0 → q1 are true. Show that p{S}q1
+also must be true.
+12. This program computes quotients and remainders.
+r := a
+q := 0
+while r ≥ d
+r := r−d
+q := q +1
+Verify that it is partially correct with respect to the ini-
+tial assertion “a and d are positive integers” and the final
+assertion “q and r are integers such that a = dq +r and
+0 ≤ r < d.”
+13. Use a loop invariant to verify that the Euclidean algo-
+rithm (Algorithm 1 in Section 4.3) is partially correct
+with respect to the initial assertion “a and b are positive
+integers” and the final assertion “x = gcd(a, b).”
+TERMS
+sequence: a function with domain that is a subset of the set of
+integers
+geometric progression: a sequence of the form a, ar, ar2
+, …,
+where a and r are real numbers
+arithmetic progression: a sequence of the form a, a +d,
+a +2d,…, where a and d are real numbers
+the principle of mathematical induction: The statement
+∀n P(n) is true if P(1) is true and ∀k[P(k) → P(k +1)] is
+true.
+basis step: the proof of P(1) in a proof by mathematical in-
+duction of ∀nP(n)
+inductive step: the proof of P(k) → P(k +1) for all posi-
+tive integers k in a proof by mathematical induction of
+∀nP(n)
+strong induction: The statement ∀nP(n) is true if P(1) is true
+and ∀k[(P(1) ∧⋯ ∧P(k)) → P(k +1)] is true.
+well-ordering property: Every nonempty set of nonnegative
+integers has a least element.
+recursive definition of a function: a definition of a function
+that specifies an initial set of values and a rule for obtaining
+values of this function at integers from its values at smaller
+integers
+recursive definition of a set: a definition of a set that specifies
+an initial set of elements in the set and a rule for obtaining
+other elements from those in the set
+Review Questions
+1. a) Can you use the principle of mathematical induction
+to find a formula for the sum of the first n terms of a
+sequence?
+b) Can you use the principle of mathematical induction
+to determine whether a given formula for the sum of
+the first n terms of a sequence is correct?
+c) Find a formula for the sum of the first n even positive
+integers, and prove it using mathematical induction.
+2. a) For which positive integers n is 11n +17 ≤ 2n?
+b) Prove the conjecture you made in part (a) using math-
+ematical induction.
+3. a) Which amounts of postage can be formed using only
+5-cent and 9-cent stamps?
+b) Prove the conjecture you made using mathematical in-
+duction.
+c) d) Prove the conjecture you made using strong induction.
+Find a proof of your conjecture diﬀerent from the ones
+you gave in (b) and (c).
+4. Give two diﬀerent examples of proofs that use strong in-
+duction.
+5. a) State the well-ordering property for the set of positive
+integers.
+b) Use this property to show that every positive inte-
+ger greater than one can be written as the product of
+primes.
+6. a) Explain why a function f from the set of positive in-
+tegers to the set of real numbers is well defined if it is
+defined recursively by specifying f (1) and a rule for
+finding f (n) from f (n−1).
+b) Provide a recursive definition of the function f (n)=
+(n +1)!.
+7. a) Give a recursive definition of the Fibonacci numbers.
+b) Show that fn > 𝛼n−2 whenever n ≥ 3, where fn is the
+nth term of the Fibonacci sequence and 𝛼 = (1 +
+√5)∕2.
+Review Questions 399
+structural induction: a technique for proving results about re-
+cursively defined sets
+recursive algorithm: an algorithm that proceeds by reducing
+a problem to the same problem with smaller input
+merge sort: a sorting algorithm that sorts a list by splitting it
+in two, sorting each of the two resulting lists, and merging
+the results into a sorted list
+iteration: a procedure based on the repeated use of operations
+in a loop
+program correctness: verification that a procedure always
+produces the correct result
+loop invariant: a property that remains true during every
+traversal of a loop
+initial assertion: the statement specifying the properties of the
+input values of a program
+final assertion: the statement specifying the properties the
+output values should have if the program worked correctly
+8. a) Explain why a sequence an is well defined if it is de-
+fined recursively by specifying a1 and a2 and a rule
+for finding an from a1, a2, …, an−1 for n = 3, 4, 5, ….
+b) Find the value of an if a1 = 1, a2 = 2, and an
+= an−1 +
+an−2 +⋯ +a1, for n = 3, 4, 5, ….
+9. Give two examples of how well-formed formulae are
+defined recursively for diﬀerent sets of elements and
+operators.
+10. a) Give a recursive definition of the length of a string.
+b) Use the recursive definition from part (a) and struc-
+tural induction to prove that l(xy)= l(x) +l(y).
+11. a) What is a recursive algorithm?
+b) Describe a recursive algorithm for computing the sum
+of n numbers in a sequence.
+12. Describe a recursive algorithm for computing the greatest
+common divisor of two positive integers.
+13. a) Describe the merge sort algorithm.
+b) Use the merge sort algorithm to put the list 4, 10, 1,
+5, 3, 8, 7, 2, 6, 9 in increasing order.
+c) Give a big-O estimate for the number of comparisons
+used by the merge sort.
+14. a) Does testing a computer program to see whether it
+produces the correct output for certain input values
+verify that the program always produces the correct
+output?
+b) Does showing that a computer program is partially
+correct with respect to an initial assertion and a final
+assertion verify that the program always produces the
+correct output? If not, what else is needed?
+15. What techniques can you use to show that a long com-
+puter program is partially correct with respect to an initial
+assertion and a final assertion?
+16. What is a loop invariant? How is a loop invariant used?
+400 5 / Induction and Recursion
+Supplementary Exercises
+n
+2n +1
+n
+3n +1
+1. Use mathematical induction to show that 2
+3 + 2
+9 + 2
+27 +
+⋯ + 2
+1
+= 1−
+whenever n is a positive integer.
+3n
+3n
+2. Use mathematical induction to show that 13 +33 +53 +
+⋯ +(2n +1)3 = (n +1)2(2n2 +4n +1) whenever n is a
+positive integer.
+3. Use mathematical induction to show that 1⋅ 20 +2⋅ 21 +
+3⋅ 22 +⋯ +n⋅ 2n−1 = (n−1)⋅ 2n +1 whenever n is a
+positive integer.
+4. Use mathematical induction to show that
+1
+1⋅ 3 +
+1
+3⋅ 5 +⋯ +
+1
+(2n−1)(2n +1)=
+whenever n is a positive integer.
+5. Show that
+1
+1⋅ 4 +
+1
+4⋅ 7 +⋯ +
+1
+(3n−2)(3n +1)=
+whenever n is a positive integer.
+6. Use mathematical induction to show that 2n > n2 +n
+whenever n is an integer greater than 4.
+7. Use mathematical induction to show that 2n > n3 when-
+ever n is an integer greater than 9.
+8. Find an integer N such that 2n > n4 whenever n is an inte-
+ger greater than N. Prove that your result is correct using
+mathematical induction.
+9. Use mathematical induction to prove that a−b is a factor
+of an
+−bn whenever n is a positive integer.
+10. Use mathematical induction to prove that 9 divides n3 +
+(n +1)3 +(n +2)3 whenever n is a nonnegative integer.
+11. Use mathematical induction to prove that 43 divides
+6n+1 +72n−1 for every positive integer n.
+12. Use mathematical induction to prove that 64 divides
+32n+2 +56n +55 for every positive integer n.
+13. Use mathematical induction to prove this formula for the
+sum of the terms of an arithmetic progression.
+a +(a +d) +⋯ +(a +nd)= (n +1)(2a +nd)∕2
+14. Suppose that a j ≡ b j (mod m) for j= 1, 2, …, n. Use
+mathematical induction to prove that
+a)n
+n
+∑
+a j ≡
+∑
+b j (mod m).
+j=1
+j=1
+b)n
+n
+∏
+a j ≡
+∏
+b j (mod m).
+j=1
+j=1
+15. Show that if n is a positive integer, then
+n
+∑
+k=1
+k +4
+k(k +1)(k +2)=
+n(3n +7)
+2(n +1)(n +2).
+16. For which positive integers n is n +6 < (n2
+Prove your answer using mathematical induction.
+−8n)∕16?
+17. (Requires calculus) Suppose that f (x)= ex and g(x)=
+xex. Use mathematical induction together with the prod-
+uct rule and the fact that f ′(x)= ex to prove that g(n)(x)=
+(x +n)ex whenever n is a positive integer.
+18. (Requires calculus) Suppose that f (x)= ex and g(x)=
+ecx, where c is a constant. Use mathematical induction
+together with the chain rule and the fact that f ′(x)= ex to
+prove that g(n) = cnecx whenever n is a positive integer.
+∗19. Formulate a conjecture about which Fibonacci numbers
+are even, and use a form of mathematical induction to
+prove your conjecture.
+∗20. Determine which Fibonacci numbers are divisible by 3.
+Use a form of mathematical induction to prove your con-
+jecture.
+∗21. Prove that fkfn +fk+1fn+1 = fn+k+1 for all nonnegative in-
+tegers n and k, where fi denotes the ith Fibonacci number.
+Recall from Example 15 of Section 2.4 that the sequence of
+Lucas numbers is defined by l0 = 2, l1 = 1, and ln
+= ln−1 +
+ln−2 for n = 2, 3, 4, ….
+22. Show that fn +fn+2 = ln+1 whenever n is a positive inte-
+ger, where fi and li are the ith Fibonacci number and ith
+Lucas number, respectively.
+23. Show that l2
+0 +l2
+1 +⋯ +l2
+n
+= lnln+1 +2 whenever n is a
+nonnegative integer and li is the ith Lucas number.
+∗24. Use mathematical induction to show that the product of
+any n consecutive positive integers is divisible by n!.
+[Hint: Use the identity m(m +1)⋯ (m +n−1)∕n! =
+(m−1)m(m +1)⋯ (m +n−2)∕n!+m(m+ 1)⋯ (m +
+n−2)∕(n−1)!.]
+25. Use mathematical induction to show that (cosx +
+i sinx)n = cosnx +i sinnx whenever n is a positive in-
+teger. (Here i is the square root of−1.) [Hint: Use
+the identities cos(a +b) = cosa cosb −sina sinb and
+sin(a +b) = sina cosb +cosa sinb.]
+∗26. Use mathematical induction to show that ∑n
+j=1 cosjx=
+cos[(n +1)x∕2] sin(nx∕2)∕sin(x∕2) whenever n is a pos-
+itive integer and sin(x∕2) ≠ 0.
+27. Use mathematical induction to prove that ∑n
+j=1 j22j =
+n22n+1
+−n2n+2 +3⋅ 2n+1
+−6 for every positive integer n.
+28. (Requires calculus) Suppose that the sequence
+x1, x2, …, xn, … is recursively defined by x1 = 0 and
+xn+1 = √xn +6.
+a) Use mathematical induction to show that x1 < x2 <
+⋯ < xn <⋯, that is, the sequence {xn} is monotoni-
+cally increasing.
+b) Use mathematical induction to prove that xn < 3 for
+n = 1, 2, ….
+c) Show that limn→∞ xn
+= 3.
+29. Show if n is a positive integer with n ≥ 2, then
+n
+∑
+j=2
+1
+j2 −1=
+(n−1)(3n +2)
+4n(n +1).
+Supplementary Exercises 401
+30. Use mathematical induction to prove Theorem 1 in Sec-
+tion 4.2, that is, show if b is an integer, where b > 1, and
+n is a positive integer, then n can be expressed uniquely
+in the form n = akbk +ak−1bk−1 +⋯ +a1b +a0.
+∗31. A lattice point in the plane is a point (x, y) where both x
+and y are integers. Use mathematical induction to show
+that at least n +1 straight lines are needed to ensure that
+every lattice point (x, y) with x ≥ 0, y ≥ 0, and x +y ≤ n
+lies on one of these lines.
+32. (Requires calculus) Use mathematical induction and the
+product rule to show that if n is a positive integer and
+f1(x), f2(x), …, fn(x), are all diﬀerentiable functions, then
+(f1(x)f2(x)⋯ fn(x))′
+f1(x)f2(x)⋯ fn(x)
+=
+f ′
+1(x)
+f1(x) +
+f ′
+2(x)
+f2(x) +⋯ +
+f ′
+n (x)
+fn(x).
+33. (Requires material in Section 2.6) Suppose that B=
+MAM−1, where A and B are n ×n matrices and M is
+invertible. Show that Bk = MAkM−1 for all positive in-
+tegers k. (Consult both the text of Section 2.6 and the
+preamble to Exercise 18 of Section 2.6.)
+34. Use mathematical induction to show that if you draw lines
+in the plane you only need two colors to color the regions
+formed so that no two regions that have an edge in com-
+mon have a common color.
+35. Show that n! can be represented as the sum of n of its
+distinct positive divisors whenever n ≥ 3. [Hint: Use in-
+ductive loading. First try to prove this result using math-
+ematical induction. By examining where your proof fails,
+find a stronger statement that you can easily prove using
+mathematical induction.]
+∗36. Use mathematical induction to prove that if x1, x2, …, xn
+are positive real numbers with n ≥ 2, then
+(x1 +
+1
+x1 )(x2 +
+1
+x2 )⋯ (xn +
+1
+xn )≥
+(x1 +
+1
+x2 )(x2 +
+1
+x3 )⋯ (xn−1 +
+1
+xn )(xn +
+1
+x1 )
+37. Use mathematical induction to prove that if n people
+stand in a line, where n is a positive integer, and if the
+first person in the line is a woman and the last person in
+line is a man, then somewhere in the line there is a woman
+directly in front of a man.
+∗38. Suppose that for every pair of cities in a country there is a
+direct one-way road connecting them in one direction or
+the other. Use mathematical induction to show that there
+is a city that can be reached from every other city either
+directly or via exactly one other city.
+39. Use mathematical induction to show that when n circles
+divide the plane into regions, these regions can be col-
+ored with two diﬀerent colors such that no regions with a
+common boundary are colored the same.
+∗40. Suppose that among a group of cars on a circular track
+there is enough fuel for one car to complete a lap. Use
+mathematical induction to show that there is a car in the
+group that can complete a lap by obtaining gas from other
+cars as it travels around the track.
+41. Show that if n is a positive integer, then
+n
+∑
+j=1
+(2j−1) (n
+∑
+k=j
+1∕k)= n(n +1)∕2.
+42. Use mathematical induction to show that if a, b, and c
+are the lengths of the sides of a right triangle, where c
+is the length of the hypotenuse, then an +bn < cn for all
+integers n with n ≥ 3.
+∗43. Use mathematical induction to show that if n is a posi-
+tive integers, the sequence 2 mod n, 22 mod n, 222 mod n,
+2222
+mod n,… is eventually constant (that is, all terms
+after a finite number of terms are all the same).
+44. A unit or Egyptian fraction is a fraction of the form
+1∕n, where n is a positive integer. In this exercise, we
+will use strong induction to show that a greedy algorithm
+can be used to express every rational number p∕q with
+0 < p∕q < 1 as the sum of distinct unit fractions. At each
+step of the algorithm, we find the smallest positive integer
+n such that 1∕n can be added to the sum without exceed-
+ing p∕q. For example, to express 5∕7 we first start the
+sum with 1∕2. Because 5∕7−1∕2= 3∕14 we add 1∕5 to
+the sum because 5 is the smallest positive integer k such
+that 1∕k < 3∕14. Because 3∕14−1∕5= 1∕70, the algo-
+rithm terminates, showing that 5∕7= 1∕2 +1∕5 +1∕70.
+Let T(p) be the statement that this algorithm terminates
+for all rational numbers p∕q with 0 < p∕q < 1. We will
+prove that the algorithm always terminates by showing
+that T(p) holds for all positive integers p.
+a) Show that the basis step T(1) holds.
+b) Suppose that T(k) holds for positive integers k with
+k < p. That is, assume that the algorithm terminates
+for all rational numbers k∕r, where 1 ≤ k < p. Show
+that if we start with p∕q and the fraction 1∕n is se-
+lected in the first step of the algorithm, then p∕q =
+p′∕q′ +1∕n, where p′ = np−q and q′ = nq. After
+considering the case where p∕q = 1∕n, use the induc-
+tive hypothesis to show that the greedy algorithm ter-
+minates when it begins with p′∕q′ and complete the
+inductive step.
+The McCarthy 91 function (defined by John McCarthy, one
+of the founders of artificial intelligence) is defined using the
+rule
+M(n)= {n−10 M(M(n +11)) if n > 100
+if n ≤ 100
+for all positive integers n.
+45. By successively using the defining rule for M(n), find
+a) M(102). b) M(101). c) M(99).
+d) M(97). e) M(87). f ) M(76).
+∗∗46. Show that the function M(n) is a well-defined function
+from the set of positive integers to the set of positive inte-
+gers. [Hint: Prove that M(n)= 91 for all positive integers
+n with n ≤ 101.]
+402 5 / Induction and Recursion
+n
+n(n +1)
++(1
+n−
+1
+1
+n +1 )
+47. Is this proof that
+1
+1⋅ 2 +
+1
+2⋅ 3 +⋯ +
+1
+=
+(n−1)n
+3
+2−
+1
+,
+n
+whenever n is a positive integer, correct? Justify your
+answer.
+Basis step: The result is true when n = 1 because
+1
+1⋅ 2=
+1
+1.
+Inductive step: Assume that the result is true for n. Then
+1
+1⋅ 2 +
+3
+2−
+1
+2⋅ 3 +⋯ +
+1
+(n−1)n
+1
++
+=
+=
+3
+2−
+3
+2−
+1
+n +1.
+Hence, the result is true for n +1 if it is true for n. This
+completes the proof.
+48. Suppose that A1, A2, …, An are a collection of sets. Sup-
+pose that R2 = A1 ⊕A2 and Rk = Rk−1 ⊕Ak for k=
+3, 4, …, n. Use mathematical induction to prove that x ∈
+Rn if and only if x belongs to an odd number of the sets
+A1, A2, …, An. (Recall that S ⊕T is the symmetric dif-
+ference of the sets S and T defined in the preamble to
+Exercise 38 of Section 2.2.)
+∗ 49. Show that n circles divide the plane into n2
+−n +2 re-
+gions if every two circles intersect in exactly two points
+and no three circles contain a common point.
+∗ 50. Show that n planes divide three-dimensional space into
+(n3 +5n +6)∕6 regions if any three of these planes have
+exactly one point in common and no four contain a com-
+mon point.
+∗ 51. Use the well-ordering property to show that √2 is ir-
+rational. [Hint: Assume that √2 is rational. Show that
+the set of positive integers of the form b√2 has a least
+element a. Then show that a√2−a is a smaller positive
+integer of this form.]
+52. A set is well ordered if every nonempty subset of this
+set has a least element. Determine whether each of the
+following sets is well ordered.
+a) the set of integers
+b) the set of integers greater than−100
+c) the set of positive rationals
+d) the set of positive rationals with denominator less than
+100
+53. a) Show that if a1, a2, …, an are positive integers, then
+gcd(a1, a2, …, an−1, an) = gcd(a1, a2, …, an−2,
+gcd(an−1, an)).
+b) Use part (a), together with the Euclidean algorithm,
+to develop a recursive algorithm for computing the
+greatest common divisor of a set of n positive inte-
+gers.
+∗ 54. Describe a recursive algorithm for writing the greatest
+common divisor of n positive integers as a linear com-
+bination of these integers.
+55. Find an explicit formula for f (n) if f (1)= 1 and f (n)=
+f (n−1) +2n−1 for n ≥ 2. Prove your result using
+mathematical induction.
+∗∗ 56. Give a recursive definition of the set of bit strings that
+contain twice as many 0s as 1s.
+57. Let S be the set of bit strings defined recursively by 𝜆 ∈ S
+and 0x ∈ S, x1 ∈ S if x ∈ S, where 𝜆 is the empty string.
+a) Find all strings in S of length not exceeding five.
+b) Give an explicit description of the elements of S.
+58. Let S be the set of strings defined recursively by abc ∈ S,
+bac ∈ S, and acb ∈ S, where a, b, and c are fixed let-
+ters; and for all x ∈ S, abcx ∈ S; abxc ∈ S, axbc ∈ S, and
+xabc ∈ S, where x is a variable representing a string of
+letters.
+a) Find all elements of S of length eight or less.
+b) Show that every element of S has a length divisible by
+three.
